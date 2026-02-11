@@ -1,99 +1,154 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine 🤍</title>
+<title>Happy Valentine 💜</title>
 
 <style>
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  text-align:center;
-  color:white;
-  overflow:hidden;
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  overflow: hidden;
+  color: white;
 }
 
-.page{
-  display:none;
-  height:100vh;
-  width:100%;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
+/* Trang chung */
+.section {
+  display: none;
+  height: 100vh;
+  padding-top: 120px;
+  animation: fade 1s ease-in-out;
 }
 
-.show{
-  display:flex;
+.active {
+  display: block;
 }
 
-#p1{
-  background: linear-gradient(135deg,#f8a5c2,#f78fb3);
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
-#p2{
-  background: linear-gradient(135deg,#f093fb,#f5576c);
+h1 {
+  font-size: 55px;
+  text-shadow: 2px 2px 8px #ff4da6;
+  animation: glow 2s infinite alternate;
 }
 
-#p3{
-  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+@keyframes glow {
+  from {text-shadow: 0 0 10px #fff;}
+  to {text-shadow: 0 0 25px #ff66cc;}
 }
 
-h1{
-  font-size:60px;
-  margin-bottom:20px;
+p {
+  font-size: 22px;
+  margin: 20px;
 }
 
-p{
-  font-size:22px;
-  margin-bottom:30px;
+button {
+  padding: 12px 35px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background: white;
+  color: #ff4da6;
+  transition: 0.3s;
 }
 
-button{
-  padding:12px 30px;
-  border-radius:30px;
-  border:2px solid black;
-  background:white;
-  font-size:18px;
-  cursor:pointer;
+button:hover {
+  transform: scale(1.1);
+  background: #ff4da6;
+  color: white;
 }
 
-button:hover{
-  background:#ffe6f0;
+/* Ảnh */
+img {
+  width: 250px;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% {transform: translateY(0);}
+  50% {transform: translateY(-15px);}
+  100% {transform: translateY(0);}
+}
+
+/* Tim rơi */
+.heart {
+  position: fixed;
+  top: -10px;
+  color: pink;
+  font-size: 20px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
-<div id="p1" class="page show">
-  <h1>Happy Valentine 🤍</h1>
-  <p>Vậy là mình đã bên nhau hơn 1 năm rồi...</p>
-  <button onclick="nextPage(2)">Tiếp</button>
+<!-- TRANG 1 -->
+<div id="page1" class="section active">
+  <h1>Happy Valentine 💜</h1>
+  <p>Vậy là mình đã bên nhau 1 năm rồi...</p>
+  <button onclick="nextPage()">Tiếp</button>
 </div>
 
-<!-- PAGE 2 -->
-<div id="p2" class="page">
-  <h1>Cảm ơn em 🤍</h1>
-  <p>Cảm ơn vì đã xuất hiện trong cuộc đời em.</p>
-  <button onclick="nextPage(3)">Tiếp</button>
+<!-- TRANG 2 -->
+<div id="page2" class="section">
+  <h1>Anh có biết không? 💕</h1>
+  <p>365 ngày qua là những ngày hạnh phúc nhất của em.</p>
+  <img src="https://i.imgur.com/0Z8FQKp.jpg">
+  <br><br>
+  <button onclick="nextPage()">Tiếp nữa</button>
 </div>
 
-<!-- PAGE 3 -->
-<div id="p3" class="page">
-  <h1>Em yêu anh nhiều lắm 🤍</h1>
-  <p>Mong rằng chúng ta sẽ còn nhiều năm nữa bên nhau.</p>
+<!-- TRANG 3 -->
+<div id="page3" class="section">
+  <h1>Cảm ơn anh 💖</h1>
+  <p>Cảm ơn vì đã luôn yêu thương, che chở và ở bên em.</p>
+  <img src="https://i.imgur.com/ZF6s192.jpg">
+  <br><br>
+  <button onclick="alert('Em yêu anh nhiều lắm 💍💖')">Hết rồi nè</button>
 </div>
 
 <script>
-function nextPage(num){
-  document.querySelectorAll(".page").forEach(function(page){
-    page.classList.remove("show");
-  });
-  document.getElementById("p"+num).classList.add("show");
+function nextPage() {
+  const pages = document.querySelectorAll(".section");
+  let current = document.querySelector(".active");
+  current.classList.remove("active");
+  current.nextElementSibling.classList.add("active");
 }
+
+/* Tạo tim rơi */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+setInterval(createHeart, 300);
 </script>
 
 </body>
 </html>
+
