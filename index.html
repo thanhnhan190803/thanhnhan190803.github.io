@@ -1,68 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Valentine 🤍</title>
 
 <style>
-body {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #ffc0cb, #ff69b4);
-  color: white;
-  padding-top: 100px;
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  text-align:center;
+  color:white;
+  overflow:hidden;
 }
 
-.page {
-  display: none;
-  font-size: 22px;
-  padding: 20px;
+.page{
+  display:none;
+  height:100vh;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
 }
 
-.show {
-  display: block;
+.show{
+  display:flex;
 }
 
-button {
-  margin-top: 30px;
-  padding: 10px 25px;
-  font-size: 18px;
-  border: none;
-  border-radius: 20px;
-  background: white;
-  color: #ff1493;
-  cursor: pointer;
+#p1{
+  background: linear-gradient(135deg,#f8a5c2,#f78fb3);
 }
 
-button:hover {
-  background: #ffe4ec;
+#p2{
+  background: linear-gradient(135deg,#f093fb,#f5576c);
+}
+
+#p3{
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+}
+
+h1{
+  font-size:60px;
+  margin-bottom:20px;
+}
+
+p{
+  font-size:22px;
+  margin-bottom:30px;
+}
+
+button{
+  padding:12px 30px;
+  border-radius:30px;
+  border:2px solid black;
+  background:white;
+  font-size:18px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#ffe6f0;
 }
 </style>
 </head>
 
 <body>
 
+<!-- PAGE 1 -->
 <div id="p1" class="page show">
   <h1>Happy Valentine 🤍</h1>
   <p>Vậy là mình đã bên nhau 1 năm rồi...</p>
   <button onclick="nextPage(2)">Tiếp</button>
 </div>
 
+<!-- PAGE 2 -->
 <div id="p2" class="page">
-  <p>Cảm ơn anh vì luôn dịu dàng và yêu thương em.</p>
+  <h1>Cảm ơn em 🤍</h1>
+  <p>Cảm ơn vì đã xuất hiện trong cuộc đời anh.</p>
   <button onclick="nextPage(3)">Tiếp</button>
 </div>
 
+<!-- PAGE 3 -->
 <div id="p3" class="page">
-  <p>Ở bên anh, em được là chính mình.</p>
-  <button onclick="nextPage(4)">Tiếp</button>
+  <h1>Anh yêu em 🤍</h1>
+  <p>Mong rằng chúng ta sẽ còn nhiều năm nữa bên nhau.</p>
 </div>
 
-<div id="p4" class="page">
-  <p>Em thật sự trân trọng 1 năm qua của chúng ta 🤍</p>
-  <button onclick="nextPage(5)">Tiếp</button>
-</div>
+<script>
+function nextPage(num){
+  document.querySelectorAll(".page").forEach(function(page){
+    page.classList.remove("show");
+  });
+  document.getElementById("p"+num).classList.add("show");
+}
+</script>
 
-<div id="p5" class="page">
-  <h2>Happy Valentine, người em thương 🤍</h2>
-  <p>Mong chúng ta sẽ còn nhiều năm bê
+</body>
+</html>
