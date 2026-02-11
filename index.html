@@ -1,98 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Happy Valentine 💜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine 🤍</title>
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  text-align: center;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
-  overflow: hidden;
-  color: white;
+  overflow:hidden;
+  background:black;
 }
 
-/* Trang chung */
-.section {
-  display: none;
-  height: 100vh;
-  padding-top: 120px;
-  animation: fade 1s ease-in-out;
+.page{
+  position:absolute;
+  width:100%;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px;
+  color:white;
+  opacity:0;
+  transform:scale(1.1);
+  transition:all 0.8s ease;
 }
 
-.active {
-  display: block;
+.show{
+  opacity:1;
+  transform:scale(1);
+  z-index:1;
 }
 
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
+/* Nền gradient từng trang */
+#p1{background:linear-gradient(135deg,#f8a5c2,#f78fb3);}
+#p2{background:linear-gradient(135deg,#f093fb,#f5576c);}
+#p3{background:linear-gradient(135deg,#ff9a9e,#fad0c4);}
+#p4{background:linear-gradient(135deg,#ff758c,#ff7eb3);}
+#p5{background:linear-gradient(135deg,#a18cd1,#fbc2eb);}
+#p6{background:linear-gradient(135deg,#fad0c4,#ffd1ff);}
+#p7{background:linear-gradient(135deg,#fbc2eb,#a6c1ee);}
+#p8{background:linear-gradient(135deg,#ff9a9e,#fecfef);}
+
+h1{
+  font-size:50px;
+  margin-bottom:20px;
+  animation:fadeIn 1.5s ease forwards;
 }
 
-h1 {
-  font-size: 55px;
-  text-shadow: 2px 2px 8px #ff4da6;
-  animation: glow 2s infinite alternate;
+p{
+  font-size:22px;
+  max-width:600px;
+  line-height:1.6;
+  animation:fadeIn 2s ease forwards;
 }
 
-@keyframes glow {
-  from {text-shadow: 0 0 10px #fff;}
-  to {text-shadow: 0 0 25px #ff66cc;}
+button{
+  margin-top:40px;
+  padding:12px 30px;
+  border-radius:30px;
+  border:none;
+  background:white;
+  color:black;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-p {
-  font-size: 22px;
-  margin: 20px;
-}
-
-button {
-  padding: 12px 35px;
-  font-size: 18px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  background: white;
-  color: #ff4da6;
-  transition: 0.3s;
-}
-
-button:hover {
-  transform: scale(1.1);
-  background: #ff4da6;
-  color: white;
+button:hover{
+  background:#ffe6f0;
+  transform:scale(1.1);
 }
 
 /* Ảnh */
-img {
-  width: 250px;
-  border-radius: 20px;
-  margin-top: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  animation: float 3s infinite ease-in-out;
+img{
+  width:200px;
+  border-radius:20px;
+  margin-bottom:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-@keyframes float {
-  0% {transform: translateY(0);}
-  50% {transform: translateY(-15px);}
-  100% {transform: translateY(0);}
+/* Tim bay */
+.heart{
+  position:absolute;
+  bottom:-10px;
+  color:white;
+  font-size:20px;
+  animation:floatUp 6s linear infinite;
+  opacity:0.7;
 }
 
-/* Tim rơi */
-.heart {
-  position: fixed;
-  top: -10px;
-  color: pink;
-  font-size: 20px;
-  animation: fall linear infinite;
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(1);}
+  100%{transform:translateY(-100vh) scale(1.5);opacity:0;}
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(100vh);
-  }
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
 }
 </style>
 </head>
@@ -100,55 +109,95 @@ img {
 <body>
 
 <!-- TRANG 1 -->
-<div id="page1" class="section active">
-  <h1>Happy Valentine 💜</h1>
-  <p>Vậy là mình đã bên nhau 1 năm rồi...</p>
-  <button onclick="nextPage()">Tiếp</button>
+<div id="p1" class="page show">
+  <img src="anh1.jpg">
+  <h1>Happy Valentine 🤍</h1>
+  <p>Cảm ơn anh đã ở đây.</p>
+  <button onclick="nextPage(2)">Tiếp</button>
 </div>
 
 <!-- TRANG 2 -->
-<div id="page2" class="section">
-  <h1>Anh có biết không? 💕</h1>
-  <p>365 ngày qua là những ngày hạnh phúc nhất của em.</p>
-  <img src="https://i.imgur.com/0Z8FQKp.jpg">
-  <br><br>
-  <button onclick="nextPage()">Tiếp nữa</button>
+<div id="p2" class="page">
+  <img src="anh2.jpg">
+  <p>Vậy là mình đã đi cùng nhau hơn 1 năm rồi…<br>
+  Hơn 365 ngày có anh trong cuộc sống của em.</p>
+  <button onclick="nextPage(3)">Tiếp</button>
 </div>
 
 <!-- TRANG 3 -->
-<div id="page3" class="section">
-  <h1>Cảm ơn anh 💖</h1>
-  <p>Cảm ơn vì đã luôn yêu thương, che chở và ở bên em.</p>
-  <img src="https://i.imgur.com/ZF6s192.jpg">
-  <br><br>
-  <button onclick="alert('Em yêu anh nhiều lắm 💍💖')">Hết rồi nè</button>
+<div id="p3" class="page">
+  <p>Có những lúc vui đến mức chỉ muốn thời gian dừng lại,<br>
+  cũng có những lúc mình chưa hiểu nhau hoàn toàn…</p>
+  <button onclick="nextPage(4)">Tiếp</button>
+</div>
+
+<!-- TRANG 4 -->
+<div id="p4" class="page">
+  <p>Nhưng sau tất cả,<br>
+  em vẫn thấy biết ơn vì người ở bên em là anh.</p>
+  <button onclick="nextPage(5)">Tiếp</button>
+</div>
+
+<!-- TRANG 5 -->
+<div id="p5" class="page">
+  <p>Cảm ơn anh vì đã dịu dàng với em,<br>
+  vì những lần lặng lẽ quan tâm,<br>
+  vì luôn cho em cảm giác an toàn.</p>
+  <button onclick="nextPage(6)">Tiếp</button>
+</div>
+
+<!-- TRANG 6 -->
+<div id="p6" class="page">
+  <p>Ở cạnh anh, em không cần cố gắng trở thành ai khác.<br>
+  Em được là chính mình… và được yêu thương.</p>
+  <button onclick="nextPage(7)">Tiếp</button>
+</div>
+
+<!-- TRANG 7 -->
+<div id="p7" class="page">
+  <p>Một năm qua không quá dài,<br>
+  nhưng đủ để em hiểu rằng<br>
+  em thật sự trân trọng mối quan hệ này.</p>
+  <button onclick="nextPage(8)">Tiếp</button>
+</div>
+
+<!-- TRANG 8 -->
+<div id="p8" class="page">
+  <h1>Happy Valentine, người em thương 🤍</h1>
+  <p>Chỉ mong chúng ta sẽ tiếp tục nắm tay nhau,<br>
+  bình yên như thế này… thêm thật lâu nữa.</p>
 </div>
 
 <script>
-function nextPage() {
-  const pages = document.querySelectorAll(".section");
-  let current = document.querySelector(".active");
-  current.classList.remove("active");
-  current.nextElementSibling.classList.add("active");
+function nextPage(num){
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("show");
+  });
+  document.getElementById("p"+num).classList.add("show");
 }
 
-/* Tạo tim rơi */
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "💖";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+/* Tạo tim bay */
+setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="🤍";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(15+Math.random()*20)+"px";
   document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
-}
-
-setInterval(createHeart, 300);
+  setTimeout(()=>{heart.remove();},6000);
+},500);
 </script>
 
 </body>
+  <audio id="bgmusic" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.body.addEventListener("click", function() {
+  document.getElementById("bgmusic").play();
+});
+</script>
 </html>
+
 
